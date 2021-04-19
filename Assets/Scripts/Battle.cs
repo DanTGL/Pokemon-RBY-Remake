@@ -2,33 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Battle : MonoBehaviour
-{
+public class Battle : MonoBehaviour {
 
+    public Player player;
+    public Enemy enemy;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public int playerChosenMove = -1;
+
+    public void PlayerLost() {
+        Debug.Log("You lost!");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void PlayerWon() {
+        Debug.Log("You won!");
     }
-    
-    int GetRandomMove() {
-        int rand = UnityEngine.Random.Range(0, 255);
 
-        if (rand < 0x3F) {
-            return 0;
-        } else if (rand < 0x7E) {
-            return 1;
-        } else if (rand < 0xBD) {
-            return 2;
+    public IEnumerator PlayerChooseMove(Move move) {
+        Move trainerMove = enemy.ChooseMove(player.GetPokemon());
+        
+        if (enemy.GetPokemon().speed > player.GetPokemon().speed) {
+            bool defeated = trainerMove.UseMove(enemy.GetPokemon(), player.GetPokemon());
+
+            yield return new WaitForSeconds(2.0f);
+
+            if (defeated) {
+                PlayerLost();
+            } else {
+                defeated = move.UseMove(player.GetPokemon(), enemy.GetPokemon());
+
+                if (defeated) {
+                    PlayerWon();
+                }
+            }
+            
         } else {
-            return 3;
+            bool defeated = move.UseMove(player.GetPokemon(), enemy.GetPokemon());
+
+            yield return new WaitForSeconds(2.0f);
+
+            if (defeated) {
+                PlayerWon();
+            } else {
+                defeated = trainerMove.UseMove(enemy.GetPokemon(), player.GetPokemon());
+                
+                if (defeated) {
+                    PlayerLost();
+                }
+            }
         }
     }
 

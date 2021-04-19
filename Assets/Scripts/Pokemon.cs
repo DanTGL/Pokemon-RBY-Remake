@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pokemon : MonoBehaviour
-{
+public class Pokemon : MonoBehaviour {
 
     public Move[] moves;
+    public int hp;
+    public int attack;
+    public int defense;
+    public int speed = 5;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public int level = 1;
+
+    public void SetHP(int hp) {
+        this.hp = hp;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Damage(int damage) {
+        this.hp -= damage;
     }
 }

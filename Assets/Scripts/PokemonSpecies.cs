@@ -1,15 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainerAI : MonoBehaviour
+public class PokemonSpecies : MonoBehaviour
 {
 
-    public Pokemon[] pokemon;
-
-    void Mod1() {
-
-    }
+    public Move[] moves;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +18,4 @@ public class TrainerAI : MonoBehaviour
     {
         
     }
-
-    void ChooseMove() {
-        
-    }
-
 }
