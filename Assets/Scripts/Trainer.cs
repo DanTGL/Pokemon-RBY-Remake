@@ -8,6 +8,11 @@ public class Trainer : Enemy {
 
     public Pokemon[] pokemon;
 
+    void Start() {
+        pokemon = new Pokemon[1];
+        pokemon[0] = new Pokemon(100, 15, 10, 13, 25);
+    }
+
     public override Pokemon GetPokemon() {
         return pokemon[curPokemon];
     }
