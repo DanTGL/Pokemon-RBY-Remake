@@ -5,6 +5,10 @@ using UnityEngine;
 public class Move {
 
     public int power;
+    
+    public Move(int power) {
+        this.power = power;
+    }
 
     float GetEffectiveness(Pokemon enemy) {
         // TODO: Implement effectiveness check
