@@ -1,12 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Move {
 
-    public int power;
+    public byte id;
+    public String name;
+    public byte effect;
+    public byte type;
+    public byte power;
+    public byte accuracy;
+    public byte pp;
     
-    public Move(int power) {
+    public Move(byte power) {
         this.power = power;
     }
 

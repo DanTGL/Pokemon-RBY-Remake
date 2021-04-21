@@ -23,7 +23,7 @@ public class Pokemon {
 
         moves = new Move[4];
         for (int i = 0; i < 4; i++) {
-            moves[i] = new Move(UnityEngine.Random.Range(1, 50));
+            moves[i] = new Move((byte)UnityEngine.Random.Range(1, 50));
         }
     }
 
